@@ -124,7 +124,6 @@ describe('AMM', () => {
       // Pool should have 150 shares
       expect(await amm.totalShares()).to.equal(tokens(150))
 
-
       ///////////////////////////////////////////////////////
       // Investor 1 swaps
       //

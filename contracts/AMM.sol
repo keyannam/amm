@@ -40,8 +40,14 @@ contract AMM {
 
 	function addLiquidity(uint256 _token1Amount, uint256 _token2Amount) external {
 		// Deposit Tokens
-		require(token1.transferFrom(msg.sender, address(this), _token1Amount), "failed to transfer token1");
-		require(token2.transferFrom(msg.sender, address(this), _token2Amount), "failed to transfer token2");
+		require(
+			token1.transferFrom(msg.sender, address(this), _token1Amount), 
+			"failed to transfer token1"
+		);
+		require(
+			token2.transferFrom(msg.sender, address(this), _token2Amount), 
+			"failed to transfer token2"
+		);
 
 		// Issue Shares
 		uint256 share;
@@ -52,7 +58,10 @@ contract AMM {
 		} else {
 			uint256 share1 = (totalShares * _token1Amount) / token1Balance;
 			uint256 share2 = (totalShares * _token2Amount) / token2Balance;
-			require((share1 / 10**3) == (share2 / 10**3), "must provide equal token amounts");
+			require(
+				(share1 / 10**3) == (share2 / 10**3), 
+				"must provide equal token amounts"
+			);
 			share = share1;
 		}
 
@@ -67,12 +76,20 @@ contract AMM {
 	}
 
 	// Determine how many token2 tokens must be deposited when depositing liquidity for token 1
-	function calculateToken2Deposit(uint256 _token1Amount) public view returns(uint256 token2Amount) {
+	function calculateToken2Deposit(uint256 _token1Amount) 
+		public 
+		view 
+		returns (uint256 token2Amount) 
+	{
 		token2Amount = (token2Balance * _token1Amount) / token1Balance;
 	}
 
 	// Determine how many token1 tokens must be deposited when depositing liquidity for token 2
-	function calculateToken1deposit(uint256 _token2Amount) public view returns(uint256 token1Amount) {
+	function calculateToken1deposit(uint256 _token2Amount) 
+		public 
+		view 
+		returns (uint256 token1Amount) 
+	{
 		token1Amount = (token1Balance * _token2Amount) / token2Balance;
 	}
 
