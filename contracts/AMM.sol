@@ -85,7 +85,7 @@ contract AMM {
 	}
 
 	// Determine how many token1 tokens must be deposited when depositing liquidity for token 2
-	function calculateToken1deposit(uint256 _token2Amount) 
+	function calculateToken1Deposit(uint256 _token2Amount) 
 		public 
 		view 
 		returns (uint256 token1Amount) 
