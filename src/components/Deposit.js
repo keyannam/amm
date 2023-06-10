@@ -137,7 +137,6 @@ const Deposit = () => {
 					</p>
 				)}
 			</Card>
-
 			{isDepositing ? (
 				<Alert 
 					message={'Deposit Pending...'}
@@ -162,7 +161,6 @@ const Deposit = () => {
 			) : (
 				<></>
 			)}
-
 		</div>
 	);
 }
